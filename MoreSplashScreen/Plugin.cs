@@ -40,9 +40,12 @@ public class Plugin : PluginBase
             case 3:  // Office old
                 services.AddTransient<SplashWindowBase, OfficeLegacySplashScreen>();
                 break;
-            case 6:
+            case 6:  // IslandOnTop
                 services.AddTransient<SplashWindowBase, IslandSplashScreen>();
                 break;
+            case 7:  // Adobe Photoshop
+                services.AddTransient<SplashWindowBase, AdobePhotoshopSplashScreen>();
+                break;
         }
-    }
+    }   
 }

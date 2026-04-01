@@ -40,6 +40,7 @@
                             <ComboBoxItem>JetBrains IDEs</ComboBoxItem>
                             <ComboBoxItem>dotUltimate</ComboBoxItem>
                             <ComboBoxItem>IslandOnTop</ComboBoxItem>
+                            <ComboBoxItem>Adobe Photoshop</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </ci:SettingsCard.Switcher>
@@ -125,9 +126,12 @@
                                          Width="18" Height="18"
                                          Margin="0 8 0 0"/>
                 <TextBlock Margin="0 6 0 0" LineHeight="21" FontSize="13">
-                    <Run>启动背景的内置图像使用了以下画师的作品：</Run><LineBreak/>
+                    <Run>启动背景的内置图像使用了以下作品：</Run><LineBreak/>
                     <Run>- Griseo：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/56022318">pixiv@合悟昂</ci:NavHyperlink><LineBreak/>
                     <Run>- RyouYamada：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/36459129">pixiv@杉茶CharTyr</ci:NavHyperlink>
+                    <Run>- Foremist：</Run><ci:NavHyperlink CommandParameter="https://www.pexels.com/zh-cn/@dannyfeng/">pexels@DannyFeng</ci:NavHyperlink>
+                    <LineBreak/>
+                    <Run>Foremist © 2025 by DannyFeng is licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0/</Run>
                 </TextBlock>
             </StackPanel>
             

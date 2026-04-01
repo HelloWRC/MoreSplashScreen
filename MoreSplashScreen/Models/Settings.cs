@@ -14,6 +14,8 @@ public partial class Settings : ObservableObject
     /// 3 - Microsoft Office (2013-2021)<br/>
     /// 4 - JetBrains IDEs <br/>
     /// 5 - dotUltimate <br/>
+    /// 6 - IslandOnTop <br/>
+    /// 7 - Adobe Photoshop <br/>
     /// </value>
     [ObservableProperty] private int _splashKind = 0;
 

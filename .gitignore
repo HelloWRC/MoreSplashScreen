@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 cipx/
 *.cipx
+
+.DS_Store
