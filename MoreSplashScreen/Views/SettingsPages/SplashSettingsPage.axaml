@@ -89,10 +89,12 @@
             </controls:SettingsExpander>
             
             <TextBlock Margin="0 6 0 0" LineHeight="21" FontSize="13"
-                       Classes="l-instructive">
+                       Classes="l-instructive" TextWrapping="Wrap">
                 <Run>启动背景的内置图像使用了以下作品：</Run><LineBreak/>
                 <Run>- Griseo：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/56022318">pixiv@合悟昂</ci:NavHyperlink><LineBreak/>
-                <Run>- RyouYamada：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/36459129">pixiv@杉茶CharTyr</ci:NavHyperlink>
+                <Run>- RyouYamada：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/36459129">pixiv@杉茶CharTyr</ci:NavHyperlink><LineBreak/>
+                <Run>- Khaslana：</Run>miHoYo<LineBreak/>
+                <Run>- Misha：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/3420822">pixiv@Csyday</ci:NavHyperlink><LineBreak/>
                 <Run>- Foremist：</Run><ci:NavHyperlink CommandParameter="https://www.pexels.com/zh-cn/@dannyfeng/">pexels@DannyFeng</ci:NavHyperlink>
                 <LineBreak/>
                 <Run>Foremist © 2025 by DannyFeng is licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0/</Run>

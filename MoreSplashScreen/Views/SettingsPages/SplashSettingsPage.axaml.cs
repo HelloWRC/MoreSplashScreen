@@ -15,6 +15,7 @@ public partial class SplashSettingsPage : SettingsPageBase
     {
         {"Griseo", "avares://MoreSplashScreen/Assets/AndroidStudio/Griseo.webp"},
         {"RyouYamada", "avares://MoreSplashScreen/Assets/AndroidStudio/RyouYamada.webp"},
+        {"Khaslana", "avares://MoreSplashScreen/Assets/AndroidStudio/Khaslana.webp"},
         {"Misha", "avares://MoreSplashScreen/Assets/AndroidStudio/Misha.webp"},
     };
 
