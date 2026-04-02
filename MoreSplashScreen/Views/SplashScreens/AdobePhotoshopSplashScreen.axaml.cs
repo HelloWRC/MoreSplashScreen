@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using ClassIsland.Core.Abstractions.Services;
 using ClassIsland.Core.Abstractions.Views;
+using ReactiveUI;
 
 namespace MoreSplashScreen.Views.SplashScreens;
 
@@ -10,28 +11,26 @@ namespace MoreSplashScreen.Views.SplashScreens;
 /// </summary>
 public partial class AdobePhotoshopSplashScreen : SplashWindowBase
 {
+    private IDisposable? _splashStatusObserver;
     public ISplashService SplashService { get; }
-    private bool _closed;
 
     public AdobePhotoshopSplashScreen(ISplashService splashService)
     {
         SplashService = splashService;
-        SplashService.SplashEnded += OnSplashEnded;
         InitializeComponent();
     }
-
-    private void OnSplashEnded(object? sender, EventArgs e)
+    
+    public override async Task StartSplash()
     {
-        SplashService.SplashEnded -= OnSplashEnded;
-        if (!_closed)
-        {
-            Dispatcher.InvokeAsync(Close);
-        }
+        _splashStatusObserver ??= SplashService.ObservableForProperty(x => x.SplashStatus)
+            .Subscribe(_ => TryRunJobs());
+        await base.StartSplash();
     }
 
-    protected override void OnClosed(EventArgs e)
+    public override async Task EndSplash()
     {
-        _closed = true;
-        base.OnClosed(e);
+        _splashStatusObserver?.Dispose();
+        _splashStatusObserver = null;
+        await base.EndSplash();
     }
 }

@@ -8,5 +8,5 @@ description: 向 ClassIsland 添加更丰富多彩的启动画面！
 entranceAssembly: "MoreSplashScreen.dll"
 url: https://github.com/HelloWRC/MoreSplashScreen
 version: 0.0.2.0
-apiVersion: 1.7.0
+apiVersion: 2.1.0.0
 author: HelloWRC

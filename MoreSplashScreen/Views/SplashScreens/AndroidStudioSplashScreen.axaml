@@ -1,5 +1,5 @@
 ﻿<ci:SplashWindowBase  x:Class="MoreSplashScreen.Views.SplashScreens.AndroidStudioSplashScreen"
-                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns="https://github.com/avaloniaui"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,40 +9,22 @@
                         mc:Ignorable="d"
                         Background="{x:Null}"
                         TextElement.Foreground="#111111"
-                        AllowsTransparency="True"
-                        WindowStyle="None"
+                        TransparencyLevelHint="Transparent"
+                        SystemDecorations="None"
                         WindowStartupLocation="CenterScreen"
                         Title="ClassIsland 正在启动" Height="400" Width="640"
-                        MouseDown="AndroidStudioSplashScreen_OnMouseDown"
                         Cursor="Wait"
                         ShowInTaskbar="False"
-                        FontFamily="{StaticResource HarmonyOsSans}"
                         Topmost="True"
                         Closing="AndroidStudioSplashScreen_OnClosing"
                         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Border CornerRadius="4" Background="White" ClipToBounds="True">
-        <Border.Clip>
-            <RectangleGeometry RadiusX="4" RadiusY="4">
-                <RectangleGeometry.Rect>
-                    <Rect Height="400" Width="640" />
-                </RectangleGeometry.Rect>
-            </RectangleGeometry>
-        </Border.Clip>
         <Grid>
             <Image Source="{Binding SplashImage}" Stretch="UniformToFill"/>
 
             <Grid VerticalAlignment="Top" HorizontalAlignment="Left"
-                  Margin="400,32,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="/ClassIsland;component/Assets/AppLogo.png" 
+                  Margin="400,32,0,0" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,Auto">
+                <Image Grid.Row="0" Grid.Column="0" Source="avares://ClassIsland/Assets/AppLogo.png" 
                        Height="32" Width="32"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="ClassIsland"
                            VerticalAlignment="Center"
@@ -65,12 +47,11 @@
             <TextBlock Text="Powered by .NET" VerticalAlignment="Bottom" HorizontalAlignment="Left"
                        FontSize="10" Foreground="#686868" Margin="42,0,0,12"/>
 
-            <ProgressBar VerticalAlignment="Bottom"
-                         Value="{Binding CurrentProgress}"
-                         materialDesign:TransitionAssist.DisableTransitions="True"
-                         Foreground="DodgerBlue"
-                         Background="{x:Null}"
-                         BorderThickness="0"/>
+            <Canvas Height="4" Width="640" VerticalAlignment="Bottom">
+                <Rectangle Width="640" Height="4" Fill="DodgerBlue" Canvas.Bottom="0"
+                           Opacity="0"
+                           x:Name="ProgressBarFill"/>
+            </Canvas>
         </Grid>
     </Border>
 </ci:SplashWindowBase>

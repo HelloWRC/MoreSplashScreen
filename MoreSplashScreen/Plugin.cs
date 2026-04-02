@@ -1,10 +1,11 @@
 
 using System.IO;
+using Avalonia.Threading;
 using ClassIsland.Core;
 using ClassIsland.Core.Abstractions;
+using ClassIsland.Core.Abstractions.Services;
 using ClassIsland.Core.Abstractions.Views;
 using ClassIsland.Core.Attributes;
-using ClassIsland.Core.Controls.CommonDialog;
 using ClassIsland.Core.Extensions.Registry;
 using ClassIsland.Shared.Helpers;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,19 +33,16 @@ public class Plugin : PluginBase
         switch (Settings.SplashKind)
         {
             case 1:  // Android Studio
-                services.AddTransient<SplashWindowBase, AndroidStudioSplashScreen>();
+                services.AddTransient<ISplashProvider, AndroidStudioSplashScreen>();
                 break;
             case 2:  // Microsoft 365
-                services.AddTransient<SplashWindowBase, Microsoft365SplashScreen>();
-                break;
-            case 3:  // Office old
-                services.AddTransient<SplashWindowBase, OfficeLegacySplashScreen>();
+                services.AddTransient<ISplashProvider, Microsoft365SplashScreen>();
                 break;
             case 6:  // IslandOnTop
-                services.AddTransient<SplashWindowBase, IslandSplashScreen>();
+                services.AddTransient<ISplashProvider, IslandSplashScreen>();
                 break;
             case 7:  // Adobe Photoshop
-                services.AddTransient<SplashWindowBase, AdobePhotoshopSplashScreen>();
+                services.AddTransient<ISplashProvider, AdobePhotoshopSplashScreen>();
                 break;
         }
     }   

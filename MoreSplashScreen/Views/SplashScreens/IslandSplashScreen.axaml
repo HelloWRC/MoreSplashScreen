@@ -1,5 +1,5 @@
-﻿<ci:SplashWindowBase  x:Class="MoreSplashScreen.Views.SplashScreens.IslandSplashScreen"
-                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window  x:Class="MoreSplashScreen.Views.SplashScreens.IslandSplashScreen"
+                        xmlns="https://github.com/avaloniaui"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,34 +9,23 @@
                         mc:Ignorable="d"
                         Background="{x:Null}"
                         TextElement.Foreground="#FFFFFF"
-                        AllowsTransparency="True"
-                        WindowStyle="None"
+                        TransparencyLevelHint="Transparent"
+                        SystemDecorations="None"
                         WindowStartupLocation="Manual"
                         Title="ClassIsland 正在启动" Height="60" Width="420"
                         Loaded="Cal"
-                        MouseDown="IslandSplashScreen_OnMouseDown"
                         Cursor="Wait"
                         ShowInTaskbar="False"
-                        FontFamily="{StaticResource HarmonyOsSans}"
                         Topmost="True"
                         Closing="IslandSplashScreen_OnClosing"
                         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Border CornerRadius="4" Background="#111111" ClipToBounds="True">
-        <Border.Clip>
-            <RectangleGeometry RadiusX="12" RadiusY="12">
-                <RectangleGeometry.Rect>
-                    <Rect Height="60" Width="420" />
-                </RectangleGeometry.Rect>
-            </RectangleGeometry>
-        </Border.Clip>
         <Grid>
-
-            <ProgressBar VerticalAlignment="Bottom"
-                         Value="{Binding CurrentProgress}"
-                         materialDesign:TransitionAssist.DisableTransitions="True"
-                         Foreground="DodgerBlue"
-                         Background="{x:Null}"
-                         BorderThickness="0"/>
+            <Canvas Height="4" Width="400"  VerticalAlignment="Bottom" ClipToBounds="True">
+                <Rectangle Width="400" Height="4" Fill="DodgerBlue" Canvas.Bottom="0"
+                           Opacity="0"
+                           x:Name="ProgressBarFill"/>
+            </Canvas>
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -50,7 +39,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="15*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Source="/ClassIsland;component/Assets/AppLogo.png" 
+                <Image Grid.Row="0" Grid.Column="0" Source="avares://ClassIsland/Assets/AppLogo.png" 
                        Height="20" Width="20" Margin="0,9,0,9"/>
                 <TextBlock Grid.Column="1" Text="ClassIsland"
                            VerticalAlignment="Top"
@@ -69,4 +58,4 @@
             </Grid>
         </Grid>
     </Border>
-</ci:SplashWindowBase>
+</Window>

@@ -1,0 +1,102 @@
+﻿<ci:SettingsPageBase x:Class="MoreSplashScreen.Views.SettingsPages.SplashSettingsPage"
+      xmlns="https://github.com/avaloniaui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MoreSplashScreen.Views.SettingsPages"
+      xmlns:ci="http://classisland.tech/schemas/xaml/core"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:controls="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+
+    <ci:SettingsPageBase.Resources>
+        <ci:PreventNullConverter x:Key="PreventNullConverter" />
+    </ci:SettingsPageBase.Resources>
+    <ScrollViewer>
+        <StackPanel Classes="settings-container animated-intro">
+            <!-- 自定义启动屏幕 -->
+            <controls:SettingsExpander Header="启动屏幕类型"
+                                       Description="应用启动时要使用的启动屏幕。"
+                                       IconSource="{ci:FluentIconSource &#xEEA1;}">
+                <controls:SettingsExpander.Footer>
+                    <ComboBox SelectedIndex="{Binding Plugin.Settings.SplashKind}"
+                              MinWidth="150">
+                        <ComboBoxItem>应用默认</ComboBoxItem>
+                        <ComboBoxItem>Android Studio</ComboBoxItem>
+                        <ComboBoxItem>Microsoft 365</ComboBoxItem>
+                        <ComboBoxItem IsEnabled="False">Microsoft Office (旧)</ComboBoxItem>
+                        <ComboBoxItem IsEnabled="False">JetBrains IDEs</ComboBoxItem>
+                        <ComboBoxItem IsEnabled="False">dotUltimate</ComboBoxItem>
+                        <ComboBoxItem>IslandOnTop</ComboBoxItem>
+                        <ComboBoxItem>Adobe Photoshop</ComboBoxItem>
+                    </ComboBox>
+                </controls:SettingsExpander.Footer>
+            </controls:SettingsExpander>
+
+            <!-- 自定义启动屏幕背景 -->
+            <controls:SettingsExpander Header="自定义启动屏幕背景"
+                                       Description="是否自定义启动屏幕上显示的背景图像。默认情况下，将根据当前版本代号选择背景图像。"
+                                       IconSource="{ci:FluentIconSource &#xE9B2;}"
+                                       IsExpanded="{Binding Plugin.Settings.IsCustomAndroidStudioSplashImageEnabled, Mode=OneWay}">
+                <controls:SettingsExpander.Footer>
+                    <StackPanel Orientation="Horizontal" Spacing="4" Classes="items-valign-center">
+                        <ListBox
+                            Theme="{StaticResource ChipListBoxTheme}"
+                            SelectionMode="Single">
+                            <ListBox.SelectedIndex>
+                                <Binding Path="Plugin.Settings.CustomAndroidStudioSplashImageKind"
+                                         Converter="{StaticResource PreventNullConverter}">
+                                </Binding>
+                            </ListBox.SelectedIndex>
+                            <ListBoxItem Content="内置" />
+                            <ListBoxItem Content="自定义" />
+                        </ListBox>
+                        <ToggleSwitch IsChecked="{Binding Plugin.Settings.IsCustomAndroidStudioSplashImageEnabled}"/>
+                    </StackPanel>
+                </controls:SettingsExpander.Footer>
+                <controls:SettingsExpander.IsVisible>
+                    <Binding Path="Plugin.Settings.SplashKind" Converter="{x:Static ObjectConverters.Equal}">
+                        <Binding.ConverterParameter>
+                            <x:Int32>1</x:Int32>
+                        </Binding.ConverterParameter>
+                    </Binding>
+                </controls:SettingsExpander.IsVisible>
+                <TabControl SelectedIndex="{Binding Plugin.Settings.CustomAndroidStudioSplashImageKind}">
+                    <TabItem IsVisible="False">
+                        <ci:Field Label="启动屏幕类型">
+                            <ComboBox
+                                ItemsSource="{Binding Source={x:Static local:SplashSettingsPage.InternalImages}}"
+                                SelectedValueBinding="{Binding Value}"
+                                SelectedValue="{Binding Plugin.Settings.CustomAndroidStudioSplashImagePath}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Key}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </ci:Field>
+                    </TabItem>
+                    <TabItem IsVisible="False">
+                        <ci:Field Label="启动背景路径">
+                            <TextBox Text="{Binding Plugin.Settings.CustomAndroidStudioSplashImagePath}"/>
+                        </ci:Field>
+                    </TabItem>
+                </TabControl>
+            </controls:SettingsExpander>
+            
+            <TextBlock Margin="0 6 0 0" LineHeight="21" FontSize="13"
+                       Classes="l-instructive">
+                <Run>启动背景的内置图像使用了以下作品：</Run><LineBreak/>
+                <Run>- Griseo：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/56022318">pixiv@合悟昂</ci:NavHyperlink><LineBreak/>
+                <Run>- RyouYamada：</Run><ci:NavHyperlink CommandParameter="https://www.pixiv.net/users/36459129">pixiv@杉茶CharTyr</ci:NavHyperlink>
+                <Run>- Foremist：</Run><ci:NavHyperlink CommandParameter="https://www.pexels.com/zh-cn/@dannyfeng/">pexels@DannyFeng</ci:NavHyperlink>
+                <LineBreak/>
+                <Run>Foremist © 2025 by DannyFeng is licensed under CC BY-NC-ND 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0/</Run>
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</ci:SettingsPageBase>

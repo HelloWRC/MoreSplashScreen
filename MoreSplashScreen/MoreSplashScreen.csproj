@@ -1,21 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<UseWPF>true</UseWPF>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PlatformTarget>AnyCPU</PlatformTarget>
 		<EnableDynamicLoading>True</EnableDynamicLoading>
-		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<ClassIslandPluginSdkVersion>1.5.0.*</ClassIslandPluginSdkVersion>
+		<ClassIslandPluginSdkVersion>2.0.3.1-dev2943</ClassIslandPluginSdkVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ClassIsland.PluginSdk" Version="1.6.1.0">
+		<PackageReference Include="ClassIsland.PluginSdk" Version="$(ClassIslandPluginSdkVersion)">
 			<ExcludeAssets>runtime; native</ExcludeAssets>
 		</PackageReference>
 	</ItemGroup>
@@ -27,16 +25,10 @@
 		<None Update="README.md">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<Resource Include="Assets\**" />
+		<AvaloniaResource Include="Assets\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Models\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Views\SplashScreens\OfficeLegacySplashScreen.xaml.cs">
-	    <SubType>Code</SubType>
-	  </Compile>
 	</ItemGroup>
 </Project>

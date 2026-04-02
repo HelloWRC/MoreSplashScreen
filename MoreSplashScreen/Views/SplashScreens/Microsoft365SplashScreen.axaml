@@ -1,0 +1,50 @@
+﻿<ci:SplashWindowBase x:Class="MoreSplashScreen.Views.SplashScreens.Microsoft365SplashScreen"
+                  xmlns="https://github.com/avaloniaui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:MoreSplashScreen.Views.SplashScreens"
+                  xmlns:ci="http://classisland.tech/schemas/xaml/core"
+                  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                  mc:Ignorable="d"
+                  Title="ClassIsland 正在启动" Height="250" Width="400"
+                  ShowInTaskbar="False"
+                  WindowStartupLocation="CenterScreen"
+                  SystemDecorations="None"
+                  FontFamily="{StaticResource AppFont}"
+                  TextElement.Foreground="#757575"
+                  RequestedThemeVariant="Light"
+                  CanResize="False"
+                  Closed="Microsoft365SplashScreen_OnClosed"
+                  Background="{x:Null}"
+                  TransparencyLevelHint="Transparent"
+                  DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Border Background="White" CornerRadius="8">
+        <!--<Image Source="/MoreSplashScreen;component/ref.png" Stretch="Fill"/>-->
+        <Grid Margin="8,8,8,8">
+            <Border Background="#80DFFF"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Padding="6,4,6,4" CornerRadius="3,3,3,3">
+                <TextBlock Text="ClassIsland"
+                           Foreground="#00526D"
+                           FontWeight="Bold"/>
+            </Border>
+            <Image Source="avares://ClassIsland/Assets/AppLogo.png" Width="96" Height="96"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+            <TextBlock TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                       d:Text="正在启动…"
+                       Text="{Binding SplashService.SplashStatus}"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button Theme="{StaticResource TransparentButton}"
+                        Content="{ci:FluentIcon &#xF09D;}"
+                        ToolTip.Tip="最小化"
+                        Click="ButtonMinimize_OnClick"/>
+                <Button Theme="{StaticResource TransparentButton}"
+                        Content="{ci:FluentIcon &#xE671;}"
+                        ToolTip.Tip="关闭"
+                        Click="ButtonExit_OnClick"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</ci:SplashWindowBase>
