@@ -44,6 +44,9 @@ public class Plugin : PluginBase
             case 7:  // Adobe Photoshop
                 services.AddTransient<ISplashProvider, AdobePhotoshopSplashScreen>();
                 break;
+            case 8:  // ALLS
+                services.AddTransient<ISplashProvider, AllsSplashScreen>();
+                break;
         }
     }   
 }

@@ -17,10 +17,10 @@
     <ScrollViewer>
         <StackPanel Classes="settings-container animated-intro">
             <!-- 自定义启动屏幕 -->
-            <controls:SettingsExpander Header="启动屏幕类型"
+            <controls:FASettingsExpander Header="启动屏幕类型"
                                        Description="应用启动时要使用的启动屏幕。"
                                        IconSource="{ci:FluentIconSource &#xEEA1;}">
-                <controls:SettingsExpander.Footer>
+                <controls:FASettingsExpander.Footer>
                     <ComboBox SelectedIndex="{Binding Plugin.Settings.SplashKind}"
                               MinWidth="150">
                         <ComboBoxItem>应用默认</ComboBoxItem>
@@ -31,16 +31,17 @@
                         <ComboBoxItem IsEnabled="False">dotUltimate</ComboBoxItem>
                         <ComboBoxItem>IslandOnTop</ComboBoxItem>
                         <ComboBoxItem>Adobe Photoshop</ComboBoxItem>
+                        <ComboBoxItem>ALLS</ComboBoxItem>
                     </ComboBox>
-                </controls:SettingsExpander.Footer>
-            </controls:SettingsExpander>
+                </controls:FASettingsExpander.Footer>
+            </controls:FASettingsExpander>
 
             <!-- 自定义启动屏幕背景 -->
-            <controls:SettingsExpander Header="自定义启动屏幕背景"
+            <controls:FASettingsExpander Header="自定义启动屏幕背景"
                                        Description="是否自定义启动屏幕上显示的背景图像。默认情况下，将根据当前版本代号选择背景图像。"
                                        IconSource="{ci:FluentIconSource &#xE9B2;}"
                                        IsExpanded="{Binding Plugin.Settings.IsCustomAndroidStudioSplashImageEnabled, Mode=OneWay}">
-                <controls:SettingsExpander.Footer>
+                <controls:FASettingsExpander.Footer>
                     <StackPanel Orientation="Horizontal" Spacing="4" Classes="items-valign-center">
                         <ListBox
                             Theme="{StaticResource ChipListBoxTheme}"
@@ -55,14 +56,14 @@
                         </ListBox>
                         <ToggleSwitch IsChecked="{Binding Plugin.Settings.IsCustomAndroidStudioSplashImageEnabled}"/>
                     </StackPanel>
-                </controls:SettingsExpander.Footer>
-                <controls:SettingsExpander.IsVisible>
+                </controls:FASettingsExpander.Footer>
+                <controls:FASettingsExpander.IsVisible>
                     <Binding Path="Plugin.Settings.SplashKind" Converter="{x:Static ObjectConverters.Equal}">
                         <Binding.ConverterParameter>
                             <x:Int32>1</x:Int32>
                         </Binding.ConverterParameter>
                     </Binding>
-                </controls:SettingsExpander.IsVisible>
+                </controls:FASettingsExpander.IsVisible>
                 <TabControl SelectedIndex="{Binding Plugin.Settings.CustomAndroidStudioSplashImageKind}">
                     <TabItem IsVisible="False">
                         <ci:Field Label="启动屏幕类型">
@@ -86,7 +87,7 @@
                         </ci:Field>
                     </TabItem>
                 </TabControl>
-            </controls:SettingsExpander>
+            </controls:FASettingsExpander>
             
             <TextBlock Margin="0 6 0 0" LineHeight="21" FontSize="13"
                        Classes="l-instructive" TextWrapping="Wrap">
